@@ -24,15 +24,48 @@ public class Tset : MonoBehaviour
         }
 
         //配列の各要素の値を逆順に表示
-        for (int r = 4; r > 0; r--)
+        for (int r = 4; r >= 0; r--)
         {
             Debug.Log(array[r]);
         }
-    }
 
+        // Bossクラスの変数を宣言してインスタンスを代入
+        Boss lastboss = new Boss();
+
+
+        for (int mp = 0; mp < 11; mp++)
+        {
+            // 防御用の関数を呼び出す
+            lastboss.Magic(5);
+        }
+    }
+    
     // Update is called once per frame
     void Update()
     {
         
     }
 }
+
+public class Boss
+{
+        private int mp = 53;
+
+        // Magic関数
+        public void Magic(int damage)
+        {
+                if (mp >= damage)
+                {
+                        
+                        // 残りmpを減らす
+                        this.mp -= damage;
+                        Debug.Log ("魔法攻撃をした。残りMPは"+ mp +"。");
+                }
+                 else
+                {
+                        Debug.Log("MPが足りないため、魔法攻撃が使えない。");
+                }
+        }
+
+}
+
